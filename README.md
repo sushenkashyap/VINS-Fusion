@@ -40,7 +40,7 @@ ROS Kinetic, Melodic, Noetic. [ROS Installation](http://wiki.ros.org/ROS/Install
 
 ### 1.2. **Ceres Solver**
 Follow [Ceres Installation](http://ceres-solver.org/installation.html).
-Tested with version 2.0.0
+Tested with version 2.1.0
 
 ## 2. Build VINS-Fusion
 Clone the repository and catkin_make:
