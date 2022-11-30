@@ -2,16 +2,16 @@
 
 #common parameters
 #support: 1 imu 1 cam; 1 imu 2 cam: 2 cam;
-imu: 1
+imu: 0
 num_of_cam: 2
 
-imu_topic: "/imu/data"
-image0_topic: "/camera_1/left/image_raw"
-image1_topic: "/camera_1/right/image_raw"
+imu_topic: "/hummingbird/vi_sensor/imu"
+image0_topic: "/hummingbird/vi_sensor/left/image_raw"
+image1_topic: "/hummingbird/vi_sensor/right/image_raw"
 output_path: "~/output/"
 
-cam0_calib: "cam0_zed.yaml"
-cam1_calib: "cam1_zed.yaml"
+cam0_calib: "cam0_rotors.yaml"
+cam1_calib: "cam1_rotors.yaml"
 image_width: 752
 image_height: 480
 
@@ -24,29 +24,19 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [0.0, 0.0, 1.0, 0.15,
-         -1.0, 0.0, 0.0, 0.06,
-         0.0, -1.0, 0.0, 0.5,
+   data: [0.0, 0.0, 1.0, 0.0,
+         -1.0, 0.0, 0.0, 0.055,
+         0.0, -1.0, 0.0, 0.0,
          0.0, 0.0, 0.0, 1.0]
 
 body_T_cam1: !!opencv-matrix
-<<<<<<< HEAD
-  rows: 4
-  cols: 4
-  dt: d
-  data: [0.0, 0.0, 1.0, 0.15,
-        -1.0, 0.0, 0.0, -0.06,
-        0.0, -1.0, 0.0, 0.5,
-        0.0, 0.0, 0.0, 1.0]
-=======
    rows: 4
    cols: 4
    dt: d
-   data: [0.0, 0.0, 1.0, 0.15,
-         -1.0, 0.0, 0.0, -0.06,
-         0.0, -1.0, 0.0, 0.5,
+   data: [0.0, 0.0, 1.0, 0.0,
+         -1.0, 0.0, 0.0, -0.055,
+         0.0, -1.0, 0.0, 0.0,
          0.0, 0.0, 0.0, 1.0]
->>>>>>> 81ea649f0e795d8ddd07bb67b7f60e6e6e0b52cb
 
 #Multiple thread support
 multiple_thread: 1
@@ -63,17 +53,6 @@ flow_back: 1            # perform forward and backward optical flow to improve f
 max_solver_time: 0.04  # max solver itration time (ms), to guarantee real time
 max_num_iterations: 8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0 # keyframe selection threshold (pixel)
-
-#imu parameters       The more accurate parameters you provide, the better performance
-gyr_n: 0.06976312748       # gyroscope measurement noise standard deviation.
-acc_n: 0.07024412072         # accelerometer measurement noise standard deviation.
-gyr_w: 0.0000490555       # gyroscope bias random work noise standard deviation.
-acc_w: 0.0000456324       # accelerometer bias random work noise standard deviation.
-g_norm: 9.81007     # gravity magnitude
-
-#unsynchronization parameters
-estimate_td: 0                      # online estimate time offset between camera and imu
-td: 0.0                             # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
 
 #loop closure parameters
 load_previous_pose_graph: 0        # load and reuse previous pose graph; load from 'pose_graph_save_path'
