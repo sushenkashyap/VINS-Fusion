@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="vins" type="vins_node" name="vins_node" output="screen" args="/home/sushen/vio_ws/vins_ws/src/VINS-Fusion/config/f1tenth/vins_f1tenth.yaml"/>
+</launch>
